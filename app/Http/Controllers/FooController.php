@@ -4,17 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Foo;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class FooController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\Http\Response|View
      */
     public function index()
     {
-        //
+        return View('foo');
     }
 
     /**

@@ -11,6 +11,9 @@
 |
 */
 
+use App\Http\Controllers\FooController;
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/foo', 'FooController@index');
