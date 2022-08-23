@@ -6,8 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Foo extends Model
 {
-    public function test()
-    {
-
-    }
+    protected $fillable = ['title'];
 }

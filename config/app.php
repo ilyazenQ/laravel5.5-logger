@@ -135,7 +135,6 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
-    'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
     'providers' => [
 
@@ -174,6 +173,7 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\LogToChannelsServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
@@ -194,7 +194,7 @@ return [
     */
 
     'aliases' => [
-
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,

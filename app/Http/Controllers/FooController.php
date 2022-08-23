@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Foo;
+use App\Helpers\LogToChannels;
+use App\Jobs\FooJob;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class FooController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,8 @@ class FooController extends Controller
      */
     public function index()
     {
-        return View('foo');
+        $foos = Foo::all();
+        return View('foo',['foos'=>$foos]);
     }
 
     /**
@@ -32,11 +36,16 @@ class FooController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+        ]);
+
+        FooJob::dispatch('Created new Foo', $request->get('title'));
+        return redirect()->route('foo.index')->with('success','Success, job in process.');
     }
 
     /**

@@ -16,5 +16,5 @@ use App\Http\Controllers\FooController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/foo', 'FooController@index');
+Route::resource('/foo', 'FooController');
 Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
